@@ -3,6 +3,7 @@
 #include <unistd.h>
 
 void setTurn();
+//function prototypes from other files are necessary!
 int producer();
 int consumer();
 
@@ -26,8 +27,9 @@ int main(){
     else{
         printf("Running the consumer file\n");
         consumer();
+        printf("*** End of program, thanks for playing! Please insert more money to play again. ***\n");
     }
-    
+
     return 0;
 }
 
