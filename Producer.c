@@ -1,17 +1,19 @@
 #include <stdlib.h>
-#include <stdio.h>
+#include <stdio.h> 
 
 int producer(){
     printf("\tI am the producer file\n");
     
-    FILE* turn = fopen("TURN.txt","r");
-    //need to keep track of how far we got into the file...
-    //--> nvm, we just shove the char into the DATA.txt file
-    char c = fgetc(turn);
+    //check if it's your turn
+    int t = checkTurn();
+
+    //******** need to fix the loop so it keeps going till the eof
+
+
     int pos = 0;
     FILE *dataFile = fopen("mydata.txt", "rt");
 
-    while(c == '0'){
+    while(t == 0){
         //grab a char from mydata.txt
         fseek(dataFile, pos, SEEK_SET);
         char k = getc(dataFile);
@@ -31,4 +33,18 @@ int producer(){
     }
     fclose(dataFile);
     return 0;
+}
+
+int checkTurn(){
+    FILE *turn = fopen("TURN.txt", "r");
+    char c = fgetc(turn);
+    fclose(turn);
+    if(c == '0'){
+        return 0;
+    }
+    if(c == '1'){
+        return 1;
+    }else{
+        printf("Error: Can't figure out who's turn it is");
+    }
 }
