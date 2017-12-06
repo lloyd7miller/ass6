@@ -25,7 +25,9 @@ int main(){
     if(pid == 0){ //executed by the child
         int check = consumer();
     }
-    printf("\n");
+    //this will create two new lines, because both 
+    //parent and child processes will execute what is bellow
+    printf("\n"); 
     return 0;
 }
 
