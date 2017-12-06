@@ -24,6 +24,12 @@ int producer(){
 
             //take that char and put it the DATA.txt exchanger file
             FILE* exData = fopen("DATA.txt","w");
+
+            if(exData == NULL){
+                printf("Error: could not open mydata.txt\n");
+                exit(1);
+            }
+
             fputc(k, exData);
             fclose(exData);
 
@@ -32,6 +38,10 @@ int producer(){
 
             //make it ahmed's turn
             FILE* turn = fopen("TURN.txt", "w");
+            if (turn == NULL){
+                printf("Error: could not open TURN.txt\n");
+                exit(1);
+            }
             putc('1', turn);
             fclose(turn);
 
