@@ -23,7 +23,7 @@ int producer(){
 
             //take that char and put it the DATA.txt exchanger file
             FILE* exData = fopen("DATA.txt","w");
-            putc(k, exData);
+            fputc(k, exData);
             fclose(exData);
 
             //increment the position that we are at in the file
@@ -36,7 +36,7 @@ int producer(){
 
             //once we have passed on the EOF to the consumer,
             //we can end the producer program
-            if (k = EOF){
+            if (k == EOF){
                 break;
             }
         }
